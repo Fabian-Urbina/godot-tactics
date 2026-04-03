@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://t54avkl018um"]
+
+[ext_resource type="Script" uid="uid://dihgh1giqqa5t" path="res://Scripts/View Model Component/Board.gd" id="2_8twoj"]
+[ext_resource type="Script" uid="uid://detcire5g72e0" path="res://Scripts/PreProduction/BoardGenerator.gd" id="3_1cbtj"]
+
+[node name="BoardCreator" type="Node3D" unique_id=1490501886]
+
+[node name="Board" type="Node3D" parent="." unique_id=956811867]
+script = ExtResource("2_8twoj")
+pos = Vector2i(5, 5)
+
+[node name="BoardGenerator" type="Node3D" parent="." unique_id=1133885747 node_paths=PackedStringArray("board")]
+script = ExtResource("3_1cbtj")
+board = NodePath("../Board")

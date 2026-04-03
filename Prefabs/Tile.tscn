@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://r0ntqlr8auvm"]
 
 [ext_resource type="Texture2D" uid="uid://bflwsoanixg61" path="res://Textures/Dirt.png" id="1_1pf63"]
+[ext_resource type="Script" uid="uid://dhqanqbn3h60g" path="res://Scripts/View Model Component/Tile.gd" id="1_luwg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luwg4"]
 albedo_texture = ExtResource("1_1pf63")
@@ -8,6 +9,7 @@ albedo_texture = ExtResource("1_1pf63")
 [sub_resource type="BoxMesh" id="BoxMesh_unfmm"]
 
 [node name="Tile" type="Node3D" unique_id=2047444201]
+script = ExtResource("1_luwg4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1230037827]
 material_override = SubResource("StandardMaterial3D_luwg4")
