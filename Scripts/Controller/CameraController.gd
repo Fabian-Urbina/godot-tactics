@@ -12,22 +12,22 @@ var _zoom = 10
 var _minPitch = -90
 var _maxPitch = 0
 
-func _ready():
-	_owner = get_node("../")
-	Zoom(0)
-	AddListeners()
-	
-func _exit_tree():
-	RemoveListeners()
-	
-func AddListeners():
-	_owner.inputController.cameraZoomEvent.connect(Zoom)
-	_owner.inputController.cameraRotateEvent.connect(Orbit)
-	
-func RemoveListeners():
-	_owner.inputController.cameraZoomEvent.disconnect(Zoom)
-	_owner.inputController.cameraRotateEvent.disconnect(Orbit)
-	
+#func _ready():
+	#_owner = get_node("../")
+	#Zoom(0)
+	#AddListeners()
+	#
+#func _exit_tree():
+	#RemoveListeners()
+	#
+#func AddListeners():
+	#_owner.inputController.cameraZoomEvent.connect(Zoom)
+	#_owner.inputController.cameraRotateEvent.connect(Orbit)
+	#
+#func RemoveListeners():
+	#_owner.inputController.cameraZoomEvent.disconnect(Zoom)
+	#_owner.inputController.cameraRotateEvent.disconnect(Orbit)
+	#
 func Zoom(scroll: int):
 	_zoom = clamp(_zoom + scroll, _minZoom, _maxZoom)
 	

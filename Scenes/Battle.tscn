@@ -3,16 +3,30 @@
 [ext_resource type="Script" uid="uid://du6mtdpeelqoa" path="res://Scripts/Controller/BattleController.gd" id="1_wvl2i"]
 [ext_resource type="Script" uid="uid://dxjy21hiq2lyi" path="res://Scripts/Controller/InputController.gd" id="2_2h7oj"]
 [ext_resource type="Script" uid="uid://m7vopax3diqx" path="res://Scripts/Controller/CameraController.gd" id="3_1samx"]
+[ext_resource type="Script" uid="uid://ds1h4fiu4w4y4" path="res://Scripts/Controller/BattleStates/InitBattleState.gd" id="3_8teo4"]
 [ext_resource type="Script" uid="uid://dihgh1giqqa5t" path="res://Scripts/View Model Component/Board.gd" id="3_p46lj"]
-[ext_resource type="Script" uid="uid://chqdfesn72lbs" path="res://Scripts/test.gd" id="4_8teo4"]
+[ext_resource type="Script" uid="uid://5im5er7rsjgy" path="res://Scripts/Controller/BattleStates/MoveTargetState.gd" id="4_c5ef4"]
+[ext_resource type="Script" uid="uid://di4k2bdb026fq" path="res://Scripts/Common/State Machine/StateMachine.gd" id="4_p46lj"]
 
 [node name="Battle" type="Node3D" unique_id=278757723]
 
-[node name="Battle Controller" type="Node" parent="." unique_id=1138392242 node_paths=PackedStringArray("board", "inputController", "cameraController")]
+[node name="Battle Controller" type="Node" parent="." unique_id=1138392242 node_paths=PackedStringArray("board", "inputController", "cameraController", "stateMachine", "startState")]
 script = ExtResource("1_wvl2i")
 board = NodePath("Board")
 inputController = NodePath("Input Controller")
 cameraController = NodePath("Camera Controller")
+stateMachine = NodePath("State Machine")
+startState = NodePath("State Machine/Init Battle State")
+
+[node name="State Machine" type="Node" parent="Battle Controller" unique_id=17193317]
+script = ExtResource("4_p46lj")
+
+[node name="Init Battle State" type="Node" parent="Battle Controller/State Machine" unique_id=1845868969 node_paths=PackedStringArray("moveTargetState")]
+script = ExtResource("3_8teo4")
+moveTargetState = NodePath("../Move Target State")
+
+[node name="Move Target State" type="Node" parent="Battle Controller/State Machine" unique_id=779951862]
+script = ExtResource("4_c5ef4")
 
 [node name="Input Controller" type="Node" parent="Battle Controller" unique_id=405291132]
 script = ExtResource("2_2h7oj")
@@ -21,9 +35,6 @@ script = ExtResource("2_2h7oj")
 script = ExtResource("3_p46lj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Battle Controller" unique_id=1712174711]
-
-[node name="Test" type="Node" parent="Battle Controller" unique_id=1728702705]
-script = ExtResource("4_8teo4")
 
 [node name="Camera Controller" type="Node3D" parent="Battle Controller" unique_id=713456169]
 script = ExtResource("3_1samx")
