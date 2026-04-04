@@ -76,9 +76,3 @@ func SaveJSON():
 func LoadJSON():
 	var saveFile = savePath + fileNameJSON
 	board.LoadMapJSON(saveFile)
-	
-	
-	
-	
-	
-	

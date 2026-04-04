@@ -7,8 +7,73 @@
 
 [node name="Board" type="Node3D" parent="." unique_id=956811867]
 script = ExtResource("2_8twoj")
-pos = Vector2i(5, 5)
 
 [node name="BoardGenerator" type="Node3D" parent="." unique_id=1133885747 node_paths=PackedStringArray("board")]
 script = ExtResource("3_1cbtj")
 board = NodePath("../Board")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1883315981]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 10, 0)
+
+[node name="Camera Controller" type="Node3D" parent="." unique_id=1462247935]
+
+[node name="Heading" type="Node3D" parent="Camera Controller" unique_id=860349784]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Pitch" type="Node3D" parent="Camera Controller/Heading" unique_id=1088488011]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Controller/Heading/Pitch" unique_id=1286702630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+projection = 1
+size = 10.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1024787473]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Clear" type="Button" parent="VBoxContainer" unique_id=1804565942]
+layout_mode = 2
+text = "Clear"
+
+[node name="Grow" type="Button" parent="VBoxContainer" unique_id=1538956055]
+layout_mode = 2
+text = "Grow"
+
+[node name="Shrink" type="Button" parent="VBoxContainer" unique_id=1993856692]
+layout_mode = 2
+text = "Shrink"
+
+[node name="Grow Area" type="Button" parent="VBoxContainer" unique_id=177964047]
+layout_mode = 2
+text = "Grow Area"
+
+[node name="Shrink Area" type="Button" parent="VBoxContainer" unique_id=1213471371]
+layout_mode = 2
+text = "Shrink Area"
+
+[node name="Save" type="Button" parent="VBoxContainer" unique_id=486180887]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="VBoxContainer" unique_id=546885697]
+layout_mode = 2
+text = "Load"
+
+[node name="Save JSON" type="Button" parent="VBoxContainer" unique_id=1794154150]
+layout_mode = 2
+text = "Save JSON"
+
+[node name="Load JSON" type="Button" parent="VBoxContainer" unique_id=1244532386]
+layout_mode = 2
+text = "Load JSON"
+
+[connection signal="pressed" from="VBoxContainer/Clear" to="BoardGenerator" method="Clear"]
+[connection signal="pressed" from="VBoxContainer/Grow" to="BoardGenerator" method="Grow"]
+[connection signal="pressed" from="VBoxContainer/Shrink" to="BoardGenerator" method="Shrink"]
+[connection signal="pressed" from="VBoxContainer/Grow Area" to="BoardGenerator" method="GrowArea"]
+[connection signal="pressed" from="VBoxContainer/Shrink Area" to="BoardGenerator" method="ShrinkArea"]
+[connection signal="pressed" from="VBoxContainer/Save" to="BoardGenerator" method="Save"]
+[connection signal="pressed" from="VBoxContainer/Load" to="BoardGenerator" method="Load"]
+[connection signal="pressed" from="VBoxContainer/Save JSON" to="BoardGenerator" method="SaveJSON"]
+[connection signal="pressed" from="VBoxContainer/Load JSON" to="BoardGenerator" method="LoadJSON"]

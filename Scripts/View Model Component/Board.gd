@@ -1,14 +1,19 @@
 @tool
 extends Node
 class_name Board
+#copy pasted from BoardGenerator
+var savePath = "res://Data/Levels/"
+@export var fileName = "defaultMap.txt"
+@export var fileNameJSON = "saveGame.json"
 
 @export var height: int = 8
 @export var pos: Vector2i:
 	get:
 		return pos
 	set(_newPos):
-		pos = _newPos
-		_UpdateMarker()
+		if tiles.has(_newPos):
+			pos = _newPos
+			_UpdateMarker()
 
 var tileViewPrefab = preload("res://Prefabs/Tile.tscn")
 var tileSelectionIndicatorPrefab = preload("res://Prefabs/Tile Selection Indicator.tscn")
@@ -106,7 +111,7 @@ func SaveMapJSON(saveFile):
 			"pos_z": tiles[key].pos.y,
 			"height": tiles[key].height
 		}
-		main_dict.append(save_dict)
+		main_dict["tiles"].append(save_dict)
 		
 	var save_game = FileAccess.open(saveFile, FileAccess.WRITE)
 	
@@ -114,7 +119,7 @@ func SaveMapJSON(saveFile):
 	save_game.store_line(json_string)
 	save_game.close()
 
-func LoadMapJown(saveFile):
+func LoadMapJSON(saveFile):
 	Clear()
 	
 	if not FileAccess.file_exists(saveFile):
