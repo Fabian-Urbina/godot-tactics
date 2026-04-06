@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Godot Tactics"
-run/main_scene="uid://t54avkl018um"
+run/main_scene="uid://b76dd5sh73v2v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/fitoz/Documents/godot-tactics/movies/movie.ogv"
 
 [input]
 

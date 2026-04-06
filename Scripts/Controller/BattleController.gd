@@ -7,5 +7,10 @@ class_name BattleController
 @export var stateMachine: StateMachine
 @export var startState: State
 
+@export var heroPrefab: PackedScene
+var currentUnit: Unit
+var currentTile: Tile:
+	get: return board.GetTile(board.pos)
+
 func _ready() -> void:
 	stateMachine.ChangeState(startState)

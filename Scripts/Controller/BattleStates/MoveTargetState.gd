@@ -1,11 +1,27 @@
 extends BattleState
 
+var tiles = []
+@export var MoveSequenceState: State
+
+func Enter():
+	super()
+	var mover: Movement = _owner.currentUnit.get_node("Movement")
+	tiles = mover.GetTilesInRange(_owner.board)
+	_owner.board.SelectTiles(tiles)
+	
+func Exit():
+	super()
+	_owner.board.DeSelectTiles(tiles)
+	tiles = null
+	
 func OnMove(e: Vector2i):
 	var rotatedPoint = _owner.cameraController.AdjustedMovement(e)
 	SelectTile(_owner.board.pos + rotatedPoint)
 
 func OnFire(e: int):
-	print("Fire: " + str(e))
+	if tiles.has(_owner.currentTile):
+		_owner.stateMachine.ChangeState(MoveSequenceState)
+		print("Fire: ", str(e))
 	
 func Zoom(scroll: int):
 	_owner.cameraController.Zoom(scroll)

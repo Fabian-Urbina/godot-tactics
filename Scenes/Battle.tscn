@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://du6mtdpeelqoa" path="res://Scripts/Controller/BattleController.gd" id="1_wvl2i"]
 [ext_resource type="Script" uid="uid://dxjy21hiq2lyi" path="res://Scripts/Controller/InputController.gd" id="2_2h7oj"]
+[ext_resource type="PackedScene" uid="uid://bmlpvkagkm182" path="res://Prefabs/Hero.tscn" id="2_qxnh6"]
 [ext_resource type="Script" uid="uid://m7vopax3diqx" path="res://Scripts/Controller/CameraController.gd" id="3_1samx"]
 [ext_resource type="Script" uid="uid://ds1h4fiu4w4y4" path="res://Scripts/Controller/BattleStates/InitBattleState.gd" id="3_8teo4"]
 [ext_resource type="Script" uid="uid://dihgh1giqqa5t" path="res://Scripts/View Model Component/Board.gd" id="3_p46lj"]
 [ext_resource type="Script" uid="uid://5im5er7rsjgy" path="res://Scripts/Controller/BattleStates/MoveTargetState.gd" id="4_c5ef4"]
 [ext_resource type="Script" uid="uid://di4k2bdb026fq" path="res://Scripts/Common/State Machine/StateMachine.gd" id="4_p46lj"]
+[ext_resource type="Script" uid="uid://gwhqcjybnbx6" path="res://Scripts/Controller/BattleStates/SelectUnitState.gd" id="5_u22qb"]
+[ext_resource type="Script" uid="uid://ufcsw38noncn" path="res://Scripts/Controller/BattleStates/MoveSequenceState.gd" id="6_6yjxy"]
 
 [node name="Battle" type="Node3D" unique_id=278757723]
 
@@ -17,16 +20,26 @@ inputController = NodePath("Input Controller")
 cameraController = NodePath("Camera Controller")
 stateMachine = NodePath("State Machine")
 startState = NodePath("State Machine/Init Battle State")
+heroPrefab = ExtResource("2_qxnh6")
 
 [node name="State Machine" type="Node" parent="Battle Controller" unique_id=17193317]
 script = ExtResource("4_p46lj")
 
-[node name="Init Battle State" type="Node" parent="Battle Controller/State Machine" unique_id=1845868969 node_paths=PackedStringArray("moveTargetState")]
+[node name="Init Battle State" type="Node" parent="Battle Controller/State Machine" unique_id=1845868969 node_paths=PackedStringArray("selectUnitState")]
 script = ExtResource("3_8teo4")
+selectUnitState = NodePath("../Select Unit State")
+
+[node name="Move Target State" type="Node" parent="Battle Controller/State Machine" unique_id=779951862 node_paths=PackedStringArray("MoveSequenceState")]
+script = ExtResource("4_c5ef4")
+MoveSequenceState = NodePath("../Move Sequence State")
+
+[node name="Select Unit State" type="Node" parent="Battle Controller/State Machine" unique_id=781767617 node_paths=PackedStringArray("moveTargetState")]
+script = ExtResource("5_u22qb")
 moveTargetState = NodePath("../Move Target State")
 
-[node name="Move Target State" type="Node" parent="Battle Controller/State Machine" unique_id=779951862]
-script = ExtResource("4_c5ef4")
+[node name="Move Sequence State" type="Node" parent="Battle Controller/State Machine" unique_id=1115408851 node_paths=PackedStringArray("SelectUnitState")]
+script = ExtResource("6_6yjxy")
+SelectUnitState = NodePath("../Select Unit State")
 
 [node name="Input Controller" type="Node" parent="Battle Controller" unique_id=405291132]
 script = ExtResource("2_2h7oj")

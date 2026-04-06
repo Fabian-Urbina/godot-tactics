@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dhqanqbn3h60g" path="res://Scripts/View Model Component/Tile.gd" id="1_luwg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luwg4"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_1pf63")
 
 [sub_resource type="BoxMesh" id="BoxMesh_unfmm"]

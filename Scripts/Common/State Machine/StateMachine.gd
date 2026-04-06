@@ -13,4 +13,5 @@ func ChangeState(newState: State) -> void:
 	
 	if _currentState:
 		_currentState.Enter()
+	print("current state: ", _currentState)
 	
