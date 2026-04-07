@@ -16,6 +16,10 @@ func Init():
 	SpawnTestUnits()
 	
 	_owner.cameraController.setFollow(_owner.board.marker)
+	
+	#TranslationServer.set_locale("ja")
+	TranslationServer.set_locale("en")
+	#TranslationServer.set_locale("es")
 	_owner.stateMachine.ChangeState(cutSceneState)
 	
 func SpawnTestUnits():
@@ -34,4 +38,5 @@ func SpawnTestUnits():
 		m.range = 5
 		m.jumpHeight = 1
 		m.set_process(true)
+		units.append(unit)
 	

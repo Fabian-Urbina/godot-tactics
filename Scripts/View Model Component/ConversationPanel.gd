@@ -27,7 +27,7 @@ func Display(sd:SpeakerData):
 	speaker.anchors_preset = speaker.anchors_preset
 	
 	for i in sd.messages.size():
-		message.text = sd.messages[i]
+		message.text = tr(sd.messages[i])
 		arrow.visible = i + 1 < sd.messages.size()
 		await _parent.resume
 	

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bwgb17nufghpi"]
+
+[ext_resource type="Script" uid="uid://bn5gigmmp82y7" path="res://Scripts/View Model Component/Poolable.gd" id="1_emx46"]
+[ext_resource type="Script" uid="uid://cj8mtcdnmkm4n" path="res://Scripts/View Model Component/AbilityMenuEntry.gd" id="2_u14fl"]
+[ext_resource type="Texture2D" uid="uid://cukfrcyu5q75x" path="res://Textures/UI/MenuBullet.png" id="3_e33q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8b3nx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8pnju"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fnjfh"]
+load_path = "res://.godot/imported/MenuBullet.png-e90be2cac4105fd0d5bfca7dab4a0752.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rx7iq"]
+load_path = "res://.godot/imported/MenuBulletSelected.png-2793823a6cdffa830be00d58859cc109.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6foa"]
+load_path = "res://.godot/imported/MenuBulletLocked.png-af81248ce30e4241bd4180ee42434dba.ctex"
+
+[node name="Ability Menu Entry" type="PanelContainer" unique_id=124937097]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8b3nx")
+script = ExtResource("1_emx46")
+
+[node name="Entry" type="PanelContainer" parent="." unique_id=567645069 node_paths=PackedStringArray("bullet", "label")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8pnju")
+script = ExtResource("2_u14fl")
+bullet = NodePath("HBox/Bullet Rect")
+label = NodePath("HBox/Entry Label")
+normalSprite = SubResource("CompressedTexture2D_fnjfh")
+selectedSprite = SubResource("CompressedTexture2D_rx7iq")
+disabledSprite = SubResource("CompressedTexture2D_t6foa")
+
+[node name="HBox" type="HBoxContainer" parent="Entry" unique_id=1005058839]
+layout_mode = 2
+
+[node name="Bullet Rect" type="TextureRect" parent="Entry/HBox" unique_id=1638235932]
+layout_mode = 2
+texture = ExtResource("3_e33q7")
+expand_mode = 3
+
+[node name="Entry Label" type="Label" parent="Entry/HBox" unique_id=1474632325]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 18
+text = "Label"

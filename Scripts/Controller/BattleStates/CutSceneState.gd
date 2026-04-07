@@ -5,7 +5,9 @@ var data: ConversationData
 
 func _ready():
 	super()
-	data = load("res://Data/Conversations/IntroScene.tres")
+	#data = load("res://Data/Conversations/IntroScene.tres")
+	#With translations
+	data = load("res://Data/Conversations/IntroScene2.tres")
 	
 func AddListeners():
 	super()

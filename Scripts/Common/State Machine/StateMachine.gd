@@ -8,10 +8,10 @@ func ChangeState(newState: State) -> void:
 		return
 	
 	if _currentState:
-		_currentState.Exit()
+		await _currentState.Exit()
 	_currentState = newState
 	
 	if _currentState:
-		_currentState.Enter()
+		await _currentState.Enter()
 	print("current state: ", _currentState)
 	

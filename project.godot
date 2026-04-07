@@ -122,6 +122,10 @@ quit={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Data/Conversations/Translations/IntroScene.en.translation", "res://Data/Conversations/Translations/IntroScene.es.translation", "res://Data/Conversations/Translations/IntroScene.ja.translation")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
