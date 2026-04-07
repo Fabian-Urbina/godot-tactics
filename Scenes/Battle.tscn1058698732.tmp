@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://barmrp8jdu8ni" path="res://Scripts/View Model Component/AbilityMenuPanel.gd" id="20_7i387"]
 [ext_resource type="Texture2D" uid="uid://cl3k4qjcinird" path="res://Textures/UI/AbilityMenu.png" id="24_1s3yx"]
 [ext_resource type="PackedScene" uid="uid://bwgb17nufghpi" path="res://Prefabs/Ability Menu Entry.tscn" id="24_mugwg"]
+[ext_resource type="Script" uid="uid://cbhemk6n3kb4j" path="res://Scripts/Test/TestItems.gd" id="27_d13iw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imcj7"]
 
@@ -483,3 +484,4 @@ layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="Test Items" type="Node" parent="." unique_id=547588590]
+script = ExtResource("27_d13iw")
