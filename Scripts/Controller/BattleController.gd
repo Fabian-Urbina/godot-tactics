@@ -6,6 +6,7 @@ class_name BattleController
 @export var cameraController: CameraController
 @export var stateMachine: StateMachine
 @export var startState: State
+@export var conversationController: ConversationController
 
 @export var heroPrefab: PackedScene
 var currentUnit: Unit

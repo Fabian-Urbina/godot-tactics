@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ConversationData" format=3 uid="uid://dkpg3exp23sep"]
+
+[ext_resource type="Script" uid="uid://bgn5016b627rs" path="res://Scripts/Model/SpeakerData.gd" id="1_s88cs"]
+[ext_resource type="Texture2D" uid="uid://devcvcay1b842" path="res://Textures/UI/Avatar.png" id="2_2gabl"]
+[ext_resource type="Script" uid="uid://ddwtps3dsb3m2" path="res://Scripts/Model/ConversationData.gd" id="2_t0wrr"]
+[ext_resource type="Texture2D" uid="uid://rucs7677lref" path="res://Textures/UI/EvilAvatar.png" id="3_vsu2l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jg17o"]
+load_path = "res://.godot/imported/EvilAvatar.png-8c1c14c4352f4953111333c356635fa8.ctex"
+
+[sub_resource type="Resource" id="Resource_yxjxc"]
+script = ExtResource("1_s88cs")
+speaker = SubResource("CompressedTexture2D_jg17o")
+anchor = 1
+messages = Array[String](["Be scared. Cause I am awesome!", "And Scary!!!", "You're scared aren't you?"])
+metadata/_custom_type_script = "uid://bgn5016b627rs"
+
+[sub_resource type="Resource" id="Resource_yh0ig"]
+script = ExtResource("1_s88cs")
+speaker = ExtResource("2_2gabl")
+anchor = 2
+messages = Array[String](["Nope. Not really.", "Let's just get this over with."])
+metadata/_custom_type_script = "uid://bgn5016b627rs"
+
+[sub_resource type="Resource" id="Resource_3blnc"]
+script = ExtResource("1_s88cs")
+speaker = ExtResource("3_vsu2l")
+anchor = 1
+messages = Array[String](["Oh... well... hmm..."])
+metadata/_custom_type_script = "uid://bgn5016b627rs"
+
+[resource]
+script = ExtResource("2_t0wrr")
+list = Array[ExtResource("1_s88cs")]([SubResource("Resource_yxjxc"), SubResource("Resource_yh0ig"), SubResource("Resource_3blnc")])
+metadata/_custom_type_script = "uid://ddwtps3dsb3m2"

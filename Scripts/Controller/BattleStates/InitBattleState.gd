@@ -1,5 +1,6 @@
 extends BattleState
-@export var selectUnitState: State
+@export var cutSceneState: State
+
 
 func Enter():
 	super()
@@ -15,7 +16,7 @@ func Init():
 	SpawnTestUnits()
 	
 	_owner.cameraController.setFollow(_owner.board.marker)
-	_owner.stateMachine.ChangeState(selectUnitState)
+	_owner.stateMachine.ChangeState(cutSceneState)
 	
 func SpawnTestUnits():
 	var components= [WalkMovement, FlyMovement, TeleportMovement]
