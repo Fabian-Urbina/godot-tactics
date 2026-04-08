@@ -24,6 +24,10 @@ window/stretch/aspect="expand"
 
 movie_writer/movie_file="C:/Users/fitoz/Documents/godot-tactics/movies/movie.ogv"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/PreProduction/plugin.cfg")
+
 [input]
 
 move_left={
