@@ -9,6 +9,7 @@ class_name BattleController
 @export var conversationController: ConversationController
 @export var abilityMenuPanelController: AbilityMenuPanelController
 @export var heroPrefab: PackedScene
+@export var statPanelController:StatPanelController
 
 var turn: Turn = Turn.new()
 var units: Array[Unit] = []

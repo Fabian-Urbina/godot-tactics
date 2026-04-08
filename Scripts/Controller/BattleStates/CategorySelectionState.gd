@@ -33,3 +33,11 @@ func Attack():
 func SetCategory(index:int):
 	actionSelectionState.category = index
 	_owner.stateMachine.ChangeState(actionSelectionState)
+
+func Enter():
+	super()
+	statPanelController.ShowPrimary(turn.actor)
+
+func Exit():
+	super()
+	await statPanelController.HidePrimary()

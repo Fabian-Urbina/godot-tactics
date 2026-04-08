@@ -33,3 +33,11 @@ func Cancel():
 		SelectTile(turn.actor.tile.pos)
 	else:
 		_owner.stateMachine.ChangeState(exploreState)
+
+func Enter():
+	super()
+	statPanelController.ShowPrimary(turn.actor)
+
+func Exit():
+	super()
+	await statPanelController.HidePrimary()

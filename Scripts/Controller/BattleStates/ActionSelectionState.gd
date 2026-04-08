@@ -28,3 +28,11 @@ func SetOptions(options:Array[String]):
 	menuOptions.clear()
 	for entry in options:
 		menuOptions.append(entry)
+
+func Enter():
+	super()
+	statPanelController.ShowPrimary(turn.actor)
+
+func Exit():
+	super()
+	await statPanelController.HidePrimary()

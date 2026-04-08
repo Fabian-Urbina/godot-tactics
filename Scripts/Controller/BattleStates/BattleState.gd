@@ -45,6 +45,10 @@ var abilityMenuPanelController:AbilityMenuPanelController:
 	get:
 		return _owner.abilityMenuPanelController
 
+var statPanelController:StatPanelController:
+	get:
+		return _owner.statPanelController
+
 var turn:Turn: 
 	get:
 		return _owner.turn
@@ -52,3 +56,23 @@ var turn:Turn:
 var units:Array[Unit]:
 	get:
 		return _owner.units
+
+func GetUnit(p:Vector2i):
+	var t:Tile = _owner.board.GetTile(p)
+	if t== null || t.content == null:
+		return null
+	return t.content
+
+func RefreshPrimaryStatPanel(p:Vector2i):
+	var target:Unit = GetUnit(p)
+	if target != null:
+		statPanelController.ShowPrimary(target)
+	else:
+		statPanelController.HidePrimary()
+
+func RefreshSecondaryStatPanel(p:Vector2i):
+	var target:Unit = GetUnit(p)
+	if target != null:
+		statPanelController.ShowSecondary(target)
+	else:
+		statPanelController.HideSecondary()
