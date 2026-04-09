@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://d3xcxd0ehxfk1" path="res://Scripts/View Model Component/Unit.gd" id="1_5e4c0"]
 [ext_resource type="Material" uid="uid://bh12v5jgqaf25" path="res://Textures/Ally.tres" id="2_hvav3"]
 [ext_resource type="Material" uid="uid://e4l03cq2s3" path="res://Textures/Eyes.tres" id="3_hxa8i"]
+[ext_resource type="Script" uid="uid://cfg46rkrga78h" path="res://Scripts/View Model Component/Ability/Range/ConstantAbilityRange.gd" id="4_hvav3"]
+[ext_resource type="Script" uid="uid://b0qha7wify6fj" path="res://Scripts/View Model Component/Ability/Area of Effect/FullAbilityArea.gd" id="5_bpn7b"]
+[ext_resource type="Script" uid="uid://dbblayskaddrp" path="res://Scripts/View Model Component/Ability/Area of Effect/SpecifyAbilityArea.gd" id="6_bpn7b"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvav3"]
 
@@ -29,3 +32,16 @@ mesh = SubResource("SphereMesh_hxa8i")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.17, 0.32, 0.18)
 material_override = ExtResource("3_hxa8i")
 mesh = SubResource("SphereMesh_hxa8i")
+
+[node name="Abilities" type="Node" parent="." unique_id=93422]
+
+[node name="Attack" type="Node" parent="Abilities" unique_id=1089680116]
+
+[node name="Ability Range" type="Node" parent="Abilities/Attack" unique_id=1731900187]
+script = ExtResource("4_hvav3")
+
+[node name="Ability Area" type="Node" parent="Abilities/Attack" unique_id=1689783835]
+script = ExtResource("5_bpn7b")
+
+[node name="Ability Effect Target" type="Node" parent="Abilities/Attack" unique_id=442741157]
+script = ExtResource("6_bpn7b")

@@ -16,10 +16,14 @@
 [ext_resource type="Script" uid="uid://d3xcj4bv0fs8d" path="res://Scripts/Controller/ConversationController.gd" id="11_262jj"]
 [ext_resource type="Script" uid="uid://dm5qx8lv4ns5e" path="res://Scripts/Controller/BattleStates/CategorySelectionState.gd" id="11_mugwg"]
 [ext_resource type="Script" uid="uid://bilgcv5bjp6e6" path="res://Scripts/Controller/BattleStates/ExploreState.gd" id="12_d13iw"]
+[ext_resource type="Script" uid="uid://d00rq7crv7rha" path="res://Scripts/Controller/BattleStates/AbilityTargetState.gd" id="13_hoytp"]
 [ext_resource type="Script" uid="uid://bj0r5cix37hsj" path="res://Scripts/View Model Component/ConversationPanel.gd" id="13_xmk5i"]
+[ext_resource type="Script" uid="uid://hu53hs4s18rn" path="res://Scripts/Controller/BattleStates/ConfirmAbilityTargetState.gd" id="14_hibfo"]
 [ext_resource type="Script" uid="uid://qxc3gmwt057g" path="res://Scripts/Common/UI/PanelAnchor.gd" id="14_jr0ro"]
 [ext_resource type="Texture2D" uid="uid://cvtw18flq5pql" path="res://Textures/UI/ConversationPanel.png" id="14_n5y6x"]
+[ext_resource type="Script" uid="uid://dhfo6emgmo8bo" path="res://Scripts/Controller/BattleStates/PerformAbilityTargetState.gd" id="15_hjq1m"]
 [ext_resource type="Texture2D" uid="uid://devcvcay1b842" path="res://Textures/UI/Avatar.png" id="15_jr0ro"]
+[ext_resource type="Script" uid="uid://b7nlognm17wqg" path="res://Scripts/Controller/BattleStates/EndFacingState.gd" id="16_0gu8g"]
 [ext_resource type="Texture2D" uid="uid://y02j84hj8nt6" path="res://Textures/UI/MoreConversationArrow.png" id="16_6xsll"]
 [ext_resource type="Script" uid="uid://brfppwof1y3eg" path="res://Scripts/Controller/GameObjectPoolController.gd" id="18_6xsll"]
 [ext_resource type="Script" uid="uid://cy6eeg2colyls" path="res://Scripts/Controller/AbilityMenuPanelController.gd" id="19_imcj7"]
@@ -329,20 +333,42 @@ script = ExtResource("9_yahm3")
 commandSelectionState = NodePath("../Command Selection State")
 categorySelectionState = NodePath("../Category Selection State")
 
-[node name="Command Selection State" type="Node" parent="Battle Controller/State Machine" unique_id=1189135085 node_paths=PackedStringArray("moveTargetState", "categorySelectionState", "selectUnitState", "exploreState")]
+[node name="Command Selection State" type="Node" parent="Battle Controller/State Machine" unique_id=1189135085 node_paths=PackedStringArray("moveTargetState", "categorySelectionState", "selectUnitState", "exploreState", "endFacingState")]
 script = ExtResource("10_1s3yx")
 moveTargetState = NodePath("../Move Target State")
 categorySelectionState = NodePath("../Category Selection State")
 selectUnitState = NodePath("../Select Unit State")
 exploreState = NodePath("../Explore State")
+endFacingState = NodePath("../End Facing State")
 
-[node name="Category Selection State" type="Node" parent="Battle Controller/State Machine" unique_id=952109647 node_paths=PackedStringArray("commandSelectionState", "actionSelectionState")]
+[node name="Category Selection State" type="Node" parent="Battle Controller/State Machine" unique_id=952109647 node_paths=PackedStringArray("commandSelectionState", "actionSelectionState", "abilityTargetState")]
 script = ExtResource("11_mugwg")
 commandSelectionState = NodePath("../Command Selection State")
 actionSelectionState = NodePath("../Action Selection State")
+abilityTargetState = NodePath("../Ability Target State")
 
 [node name="Explore State" type="Node" parent="Battle Controller/State Machine" unique_id=57123643 node_paths=PackedStringArray("commandSelectionState")]
 script = ExtResource("12_d13iw")
+commandSelectionState = NodePath("../Command Selection State")
+
+[node name="Ability Target State" type="Node" parent="Battle Controller/State Machine" unique_id=1819143923 node_paths=PackedStringArray("confirmAbilityTargetState", "categorySelectionState")]
+script = ExtResource("13_hoytp")
+confirmAbilityTargetState = NodePath("../Confirm Ability Target State")
+categorySelectionState = NodePath("../Category Selection State")
+
+[node name="Confirm Ability Target State" type="Node" parent="Battle Controller/State Machine" unique_id=845568453 node_paths=PackedStringArray("performAbilityState", "abilityTargetState")]
+script = ExtResource("14_hibfo")
+performAbilityState = NodePath("../Perform Ability Target State")
+abilityTargetState = NodePath("../Ability Target State")
+
+[node name="Perform Ability Target State" type="Node" parent="Battle Controller/State Machine" unique_id=1896046108 node_paths=PackedStringArray("endFacingState", "commandSelectionState")]
+script = ExtResource("15_hjq1m")
+endFacingState = NodePath("../End Facing State")
+commandSelectionState = NodePath("../Command Selection State")
+
+[node name="End Facing State" type="Node" parent="Battle Controller/State Machine" unique_id=1373417980 node_paths=PackedStringArray("selectUnitState", "commandSelectionState")]
+script = ExtResource("16_0gu8g")
+selectUnitState = NodePath("../Select Unit State")
 commandSelectionState = NodePath("../Command Selection State")
 
 [node name="Input Controller" type="Node" parent="Battle Controller" unique_id=405291132]

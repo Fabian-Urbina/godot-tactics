@@ -76,3 +76,11 @@ func RefreshSecondaryStatPanel(p:Vector2i):
 		statPanelController.ShowSecondary(target)
 	else:
 		statPanelController.HideSecondary()
+
+var pos:Vector2i:
+	get:
+		return _owner.board.pos
+
+var board:Board:
+	get:
+		return _owner.board
