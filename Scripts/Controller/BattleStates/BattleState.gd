@@ -84,3 +84,7 @@ var pos:Vector2i:
 var board:Board:
 	get:
 		return _owner.board
+
+var turnController:TurnOrderController:
+	get:
+		return _owner.turnOrderController
