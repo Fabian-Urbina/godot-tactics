@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://cfg46rkrga78h" path="res://Scripts/View Model Component/Ability/Range/ConstantAbilityRange.gd" id="4_hvav3"]
 [ext_resource type="Script" uid="uid://b0qha7wify6fj" path="res://Scripts/View Model Component/Ability/Area of Effect/FullAbilityArea.gd" id="5_bpn7b"]
 [ext_resource type="Script" uid="uid://dbblayskaddrp" path="res://Scripts/View Model Component/Ability/Area of Effect/SpecifyAbilityArea.gd" id="6_bpn7b"]
+[ext_resource type="Script" uid="uid://cr8kgg26dk84u" path="res://Scripts/View Model Component/Status/Status.gd" id="7_tyr0m"]
+[ext_resource type="Script" uid="uid://t4257qrr856i" path="res://Scripts/View Model Component/Actor/Equipment.gd" id="8_eps0f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvav3"]
 
@@ -45,3 +47,9 @@ script = ExtResource("5_bpn7b")
 
 [node name="Ability Effect Target" type="Node" parent="Abilities/Attack" unique_id=442741157]
 script = ExtResource("6_bpn7b")
+
+[node name="Status" type="Node" parent="." unique_id=1215477938]
+script = ExtResource("7_tyr0m")
+
+[node name="Equipment" type="Node" parent="." unique_id=1470005871]
+script = ExtResource("8_eps0f")

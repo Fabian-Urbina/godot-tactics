@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://bc6sttq8yc7jw" path="res://Scripts/View Model Component/StatPanel.gd" id="28_d5dbc"]
 [ext_resource type="Texture2D" uid="uid://2a8djovmqtab" path="res://Textures/UI/RedAttackPanel.png" id="30_hoytp"]
 [ext_resource type="Script" uid="uid://ckus30u56jx0b" path="res://Scripts/Controller/TurnOrderController.gd" id="35_hjq1m"]
+[ext_resource type="Script" uid="uid://bb06skoaer8ov" path="res://Scripts/Test/StatusEffectDemo.gd" id="36_0gu8g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imcj7"]
 
@@ -822,3 +823,6 @@ vertical_alignment = 1
 
 [node name="Turn Order Controller" type="Node" parent="Battle Controller" unique_id=783079986]
 script = ExtResource("35_hjq1m")
+
+[node name="Test" type="Node" parent="." unique_id=786191706]
+script = ExtResource("36_0gu8g")
