@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cg5pkia3bqdjm"]
 
-[ext_resource type="Script" path="res://Scripts/View Model Component/Actor/Job.gd" id="1_tiuft"]
-[ext_resource type="Script" path="res://Scripts/View Model Component/Features/StatModifierFeature.gd" id="2_dbaqo"]
+[ext_resource type="Script" uid="uid://ciph3ekrnmoan" path="res://Scripts/View Model Component/Actor/Job.gd" id="1_tiuft"]
+[ext_resource type="Script" uid="uid://kdcj5nbjeoaf" path="res://Scripts/View Model Component/Features/StatModifierFeature.gd" id="2_dbaqo"]
 
 [node name="Job" type="Node" unique_id=821302216]
 script = ExtResource("1_tiuft")

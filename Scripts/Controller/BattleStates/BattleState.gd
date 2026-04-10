@@ -88,3 +88,7 @@ var board:Board:
 var turnController:TurnOrderController:
 	get:
 		return _owner.turnOrderController
+
+var hitSuccessIndicator:HitSuccessIndicator:
+	get:
+		return _owner.hitSuccessIndicator

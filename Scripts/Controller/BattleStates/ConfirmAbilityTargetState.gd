@@ -15,13 +15,17 @@ func Enter():
 	board.SelectTiles(tiles)
 	FindTargets()
 	RefreshPrimaryStatPanel(turn.actor.tile.pos)
-	SetTarget(0)
+	
+	if turn.targets.size() > 0:
+		await hitSuccessIndicator.Show()
+		SetTarget(0)
 
 func Exit():
 	super()
 	board.DeSelectTiles(tiles)
 	await statPanelController.HidePrimary()
 	await statPanelController.HideSecondary()
+	await hitSuccessIndicator.Hide()
 
 func OnMove(e:Vector2i):
 	if(e.x > 0 || e.y < 0):
@@ -30,9 +34,16 @@ func OnMove(e:Vector2i):
 		SetTarget(index - 1)
 	
 func OnFire(e:int):
+	print("OnFire:", e)
+	print("pos:", pos)
+	print("tiles:", tiles.size())
+	print("targets after find:", turn.targets.size())
 	if(e == 0):
 		if (turn.targets.size() > 0):
+			print("changing to performAbilityState")
 			_owner.stateMachine.ChangeState(performAbilityState)
+		else:
+			print("NO TARGETS")
 	else:
 		_owner.stateMachine.ChangeState(abilityTargetState)
 
@@ -40,6 +51,9 @@ func FindTargets():
 	turn.targets = []	
 	var children:Array[Node] = turn.ability.get_children()
 	var targeters:Array[AbilityEffectTarget]
+	for node in children:
+		print(node is AbilityEffectTarget)
+		print(node, " type:", typeof(node), " script:", node.get_script())
 	targeters.assign(children.filter(func(node): return node is AbilityEffectTarget))
 	
 	for tile in tiles:
@@ -60,9 +74,27 @@ func SetTarget(target:int):
 		index = 0
 	if turn.targets.size() > 0:
 		RefreshSecondaryStatPanel(turn.targets[index].pos)
+		UpdateHitSuccessIndicator()
 
 func Zoom(scroll: int):
 	_owner.cameraController.Zoom(scroll)
   
 func Orbit(direction: Vector2):
 	_owner.cameraController.Orbit(direction)
+
+func UpdateHitSuccessIndicator():
+	var chance:int = CalculateHitRate()
+	var amount:int = EstimateDamage()
+	hitSuccessIndicator.SetStats(chance, amount)
+
+func CalculateHitRate():
+	var target = turn.targets[index].content
+	var children:Array[Node] = turn.ability.find_children("*", "HitRate", false)
+	if children:
+		var hr:HitRate = children[0]
+		return hr.Calculate(turn.actor, target)
+	print("Couldn't find Hit Rate")
+	return 0
+	
+func EstimateDamage()->int:
+	return 50

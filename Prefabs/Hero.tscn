@@ -5,7 +5,8 @@
 [ext_resource type="Material" uid="uid://e4l03cq2s3" path="res://Textures/Eyes.tres" id="3_hxa8i"]
 [ext_resource type="Script" uid="uid://cfg46rkrga78h" path="res://Scripts/View Model Component/Ability/Range/ConstantAbilityRange.gd" id="4_hvav3"]
 [ext_resource type="Script" uid="uid://b0qha7wify6fj" path="res://Scripts/View Model Component/Ability/Area of Effect/FullAbilityArea.gd" id="5_bpn7b"]
-[ext_resource type="Script" uid="uid://dbblayskaddrp" path="res://Scripts/View Model Component/Ability/Area of Effect/SpecifyAbilityArea.gd" id="6_bpn7b"]
+[ext_resource type="Script" uid="uid://cban6xbqtdwch" path="res://Scripts/View Model Component/Ability/Effect Target/DefaultEffectTarget.gd" id="6_eps0f"]
+[ext_resource type="Script" uid="uid://y7i23ujgqbvl" path="res://Scripts/View Model Component/Ability/Hit Rate/ATypeHitRate.gd" id="7_eps0f"]
 [ext_resource type="Script" uid="uid://cr8kgg26dk84u" path="res://Scripts/View Model Component/Status/Status.gd" id="7_tyr0m"]
 [ext_resource type="Script" uid="uid://t4257qrr856i" path="res://Scripts/View Model Component/Actor/Equipment.gd" id="8_eps0f"]
 
@@ -46,7 +47,10 @@ script = ExtResource("4_hvav3")
 script = ExtResource("5_bpn7b")
 
 [node name="Ability Effect Target" type="Node" parent="Abilities/Attack" unique_id=442741157]
-script = ExtResource("6_bpn7b")
+script = ExtResource("6_eps0f")
+
+[node name="Hit Rate" type="Node" parent="Abilities/Attack" unique_id=1004203406]
+script = ExtResource("7_eps0f")
 
 [node name="Status" type="Node" parent="." unique_id=1215477938]
 script = ExtResource("7_tyr0m")
