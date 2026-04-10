@@ -92,3 +92,11 @@ var turnController:TurnOrderController:
 var hitSuccessIndicator:HitSuccessIndicator:
 	get:
 		return _owner.hitSuccessIndicator
+
+func GetParentUnit(node:Node):
+	var parent = node.get_parent()
+	if parent == null:
+		return null
+	if parent is Unit:
+		return parent
+	return GetParentUnit(parent)

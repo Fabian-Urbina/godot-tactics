@@ -4,11 +4,17 @@
 [ext_resource type="Material" uid="uid://bh12v5jgqaf25" path="res://Textures/Ally.tres" id="2_hvav3"]
 [ext_resource type="Material" uid="uid://e4l03cq2s3" path="res://Textures/Eyes.tres" id="3_hxa8i"]
 [ext_resource type="Script" uid="uid://cfg46rkrga78h" path="res://Scripts/View Model Component/Ability/Range/ConstantAbilityRange.gd" id="4_hvav3"]
+[ext_resource type="Script" uid="uid://cntccgf76k84y" path="res://Scripts/View Model Component/Ability/Ability.gd" id="4_sghas"]
 [ext_resource type="Script" uid="uid://b0qha7wify6fj" path="res://Scripts/View Model Component/Ability/Area of Effect/FullAbilityArea.gd" id="5_bpn7b"]
-[ext_resource type="Script" uid="uid://cban6xbqtdwch" path="res://Scripts/View Model Component/Ability/Effect Target/DefaultEffectTarget.gd" id="6_eps0f"]
+[ext_resource type="Script" uid="uid://byxywxahanv2g" path="res://Scripts/View Model Component/Ability/Power/PhysicalAbilityPower.gd" id="6_eps0f"]
+[ext_resource type="Script" uid="uid://dup1rj8r3dyrr" path="res://Scripts/View Model Component/Ability/DamageAbilityEffect.gd" id="7_2anib"]
 [ext_resource type="Script" uid="uid://y7i23ujgqbvl" path="res://Scripts/View Model Component/Ability/Hit Rate/ATypeHitRate.gd" id="7_eps0f"]
 [ext_resource type="Script" uid="uid://cr8kgg26dk84u" path="res://Scripts/View Model Component/Status/Status.gd" id="7_tyr0m"]
 [ext_resource type="Script" uid="uid://t4257qrr856i" path="res://Scripts/View Model Component/Actor/Equipment.gd" id="8_eps0f"]
+[ext_resource type="Script" uid="uid://cban6xbqtdwch" path="res://Scripts/View Model Component/Ability/Effect Target/DefaultAbilityEffectTarget.gd" id="8_o1gqx"]
+[ext_resource type="Script" uid="uid://vja6vhuqjo7n" path="res://Scripts/View Model Component/Ability/InflictAbilityEffect.gd" id="10_sghas"]
+[ext_resource type="Script" uid="uid://3052appmd0d" path="res://Scripts/View Model Component/Status/Effects/BlindStatusEffect.gd" id="11_2gcjh"]
+[ext_resource type="Script" uid="uid://ng01g0j6nc8j" path="res://Scripts/View Model Component/Ability/Hit Rate/STypeHitRate.gd" id="12_2xv7q"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvav3"]
 
@@ -39,6 +45,7 @@ mesh = SubResource("SphereMesh_hxa8i")
 [node name="Abilities" type="Node" parent="." unique_id=93422]
 
 [node name="Attack" type="Node" parent="Abilities" unique_id=1089680116]
+script = ExtResource("4_sghas")
 
 [node name="Ability Range" type="Node" parent="Abilities/Attack" unique_id=1731900187]
 script = ExtResource("4_hvav3")
@@ -46,11 +53,30 @@ script = ExtResource("4_hvav3")
 [node name="Ability Area" type="Node" parent="Abilities/Attack" unique_id=1689783835]
 script = ExtResource("5_bpn7b")
 
-[node name="Ability Effect Target" type="Node" parent="Abilities/Attack" unique_id=442741157]
+[node name="Physical Ability Power" type="Node" parent="Abilities/Attack" unique_id=1352152113]
 script = ExtResource("6_eps0f")
+level = 45
 
-[node name="Hit Rate" type="Node" parent="Abilities/Attack" unique_id=1004203406]
+[node name="Damage" type="Node" parent="Abilities/Attack" unique_id=270541138]
+script = ExtResource("7_2anib")
+
+[node name="Ability Effect Target" type="Node" parent="Abilities/Attack/Damage" unique_id=2089191004]
+script = ExtResource("8_o1gqx")
+
+[node name="Hit Rate" type="Node" parent="Abilities/Attack/Damage" unique_id=469578705]
 script = ExtResource("7_eps0f")
+
+[node name="Inflict Blind" type="Node" parent="Abilities/Attack" unique_id=120437946]
+script = ExtResource("10_sghas")
+status_effect = ExtResource("11_2gcjh")
+effect_name = "Blind"
+duration = 50
+
+[node name="Ability Effect Target" type="Node" parent="Abilities/Attack/Inflict Blind" unique_id=1753775898]
+script = ExtResource("8_o1gqx")
+
+[node name="Hit Rate" type="Node" parent="Abilities/Attack/Inflict Blind" unique_id=1274022180]
+script = ExtResource("12_2xv7q")
 
 [node name="Status" type="Node" parent="." unique_id=1215477938]
 script = ExtResource("7_tyr0m")

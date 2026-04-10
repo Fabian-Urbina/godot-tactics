@@ -13,6 +13,15 @@ const MenuCount:int = 4
 var menuEntries: Array[AbilityMenuEntry] = []
 var selection:int
 
+signal GetAttackNotification(info:Info)
+signal GetDefenseNotification(info:Info)
+signal GetPowerNotification(info:Info)
+signal TweakDamageNotification(info:Info)
+
+signal CanPerformCheck(exc:BaseException)
+signal FailedNotification()
+signal DidPerformNotification()
+
 func _ready():
 	%PoolController.AddEntry(EntryPoolKey, entryPrefab, MenuCount, 2147483647)
 	panel.SetPosition(HideKey, false)
